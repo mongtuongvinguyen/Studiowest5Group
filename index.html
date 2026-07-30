@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Studio West 5 — Tư vấn thiết kế, đầu tư & quản lý dự án</title>
+<meta name="description" content="Studio West 5 (SW5) — tư vấn thiết kế, đầu tư và quản lý dự án cho nhà ở cao tầng và nhà ở xã hội. Đồng hành chủ đầu tư trọn vòng đời dự án. Từ 2010.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0A0A0A;
+    --red:#F50000;
+    --paper:#F6F4F0;
+    --panel:#FBFAF8;
+    --muted:#6B6560;
+    --line:#E4E0DA;
+    --line-dark:#2A2A2A;
+    --paper-dark:#F6F4F0;
+    --maxw:1280px;
+    --serif:"Fraunces","Be Vietnam Pro",Georgia,serif;
+    --sans:"Be Vietnam Pro",system-ui,-apple-system,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:var(--sans);
+    background:var(--paper);
+    color:var(--ink);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  a{color:inherit;text-decoration:none}
+  img{display:block;max-width:100%}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 32px}
+  @media(max-width:768px){.wrap{padding:0 20px}}
+
+  /* ---- eyebrow / labels ---- */
+  .eyebrow{
+    font-size:12px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;
+    color:var(--red);display:inline-flex;align-items:center;gap:10px;
+  }
+  .eyebrow::before{content:"";width:28px;height:1px;background:var(--red)}
+  .eyebrow.on-dark{color:#fff}
+  .eyebrow.on-dark::before{background:var(--red)}
+
+  h1,h2,h3{font-family:var(--serif);font-weight:500;letter-spacing:-.02em;line-height:1.04}
+
+  /* ---- nav ---- */
+  header.nav{
+    position:sticky;top:0;z-index:50;
+    background:rgba(246,244,240,.82);
+    backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:72px}
+  .brand{display:flex;align-items:center;gap:12px;font-weight:700;letter-spacing:.02em}
+  .brand .mark{
+    width:34px;height:34px;flex:0 0 34px;background:var(--ink);color:var(--paper);
+    display:grid;place-items:center;font-family:var(--serif);font-weight:600;font-size:15px;
+  }
+  .brand .mark b{color:var(--red)}
+  .brand small{display:block;font-size:11px;font-weight:500;letter-spacing:.14em;color:var(--muted);text-transform:uppercase}
+  .nav-links{display:flex;gap:34px;font-size:14px;font-weight:500}
+  .nav-links a{color:var(--muted);transition:color .2s}
+  .nav-links a:hover{color:var(--ink)}
+  .nav-cta{
+    font-size:13px;font-weight:600;padding:11px 20px;background:var(--ink);color:var(--paper);
+    transition:transform .15s,background .2s;
+  }
+  .nav-cta:hover{background:var(--red)}
+  .nav-cta:active{transform:translateY(1px)}
+  .nav-links,.nav-cta{display:none}
+  @media(min-width:900px){.nav-links{display:flex}.nav-cta{display:inline-block}}
+
+  /* ---- buttons ---- */
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;font-weight:600;font-size:15px;
+    padding:15px 26px;transition:transform .15s,background .2s,color .2s,border-color .2s;cursor:pointer;border:1px solid transparent;
+  }
+  .btn:active{transform:translateY(1px)}
+  .btn-primary{background:var(--red);color:#fff}
+  .btn-primary:hover{background:var(--ink)}
+  .btn-ghost{background:transparent;color:var(--ink);border-color:var(--ink)}
+  .btn-ghost:hover{background:var(--ink);color:var(--paper)}
+  .btn .ar{transition:transform .2s}
+  .btn:hover .ar{transform:translate(3px,-3px)}
+
+  /* ---- HERO ---- */
+  .hero{padding:64px 0 0}
+  .hero-grid{display:grid;grid-template-columns:1fr;gap:40px;align-items:end}
+  @media(min-width:960px){.hero-grid{grid-template-columns:1.05fr .95fr;gap:56px;min-height:74vh}}
+  .hero-copy .eyebrow{margin-bottom:26px}
+  .hero h1{font-size:clamp(38px,6vw,74px);margin-bottom:26px}
+  .hero h1 em{font-style:italic;color:var(--red)}
+  .hero-sub{font-size:clamp(16px,1.6vw,19px);color:var(--muted);max-width:46ch;margin-bottom:36px}
+  .hero-actions{display:flex;flex-wrap:wrap;gap:14px;margin-bottom:40px}
+  .hero-media{position:relative;align-self:stretch;min-height:360px}
+  @media(min-width:960px){.hero-media{min-height:auto}}
+  .hero-tag{
+    position:absolute;left:0;bottom:0;z-index:2;background:var(--paper);
+    padding:16px 22px 0 0;font-size:13px;color:var(--muted);max-width:280px;
+  }
+  .hero-tag b{color:var(--ink);font-weight:600}
+
+  /* ---- media placeholder (khóa hình trước) ---- */
+  .media{position:relative;overflow:hidden;background:var(--ink)}
+  .media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:2}
+  .media .ph{
+    position:absolute;inset:0;z-index:1;
+    background:
+      linear-gradient(135deg,#141414 0%,#0A0A0A 60%,#050505 100%);
+    display:flex;flex-direction:column;justify-content:flex-end;padding:22px;color:#8A8A8A;
+  }
+  .media .ph::before{
+    content:"";position:absolute;inset:0;opacity:.5;
+    background-image:linear-gradient(var(--line-dark) 1px,transparent 1px),linear-gradient(90deg,var(--line-dark) 1px,transparent 1px);
+    background-size:28px 28px;mask-image:radial-gradient(circle at 70% 25%,#000,transparent 72%);
+  }
+  .media .ph .num{position:absolute;top:20px;left:22px;font-family:var(--serif);font-size:30px;color:#3a3a3a;font-weight:600}
+  .media .ph .plabel{font-size:12px;letter-spacing:.06em;position:relative}
+  .media .ph .plabel b{display:block;color:#cfcfcf;font-family:var(--serif);font-size:17px;font-weight:500;letter-spacing:0;margin-bottom:3px}
+  .ratio-43{aspect-ratio:4/3}
+  .ratio-11{aspect-ratio:1/1}
+  .ratio-32{aspect-ratio:3/2}
+  .ratio-169{aspect-ratio:16/9}
+
+  /* ---- stats strip ---- */
+  .stats{border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-top:56px}
+  .stats-grid{display:grid;grid-template-columns:repeat(2,1fr)}
+  @media(min-width:820px){.stats-grid{grid-template-columns:repeat(4,1fr)}}
+  .stat{padding:34px 28px;border-right:1px solid var(--line)}
+  .stat:last-child{border-right:none}
+  @media(max-width:819px){
+    .stat:nth-child(2n){border-right:none}
+    .stat:nth-child(-n+2){border-bottom:1px solid var(--line)}
+  }
+  .stat .n{font-family:var(--serif);font-size:clamp(34px,4vw,48px);font-weight:600;line-height:1;letter-spacing:-.02em}
+  .stat .n span{color:var(--red)}
+  .stat .l{font-size:13px;color:var(--muted);margin-top:10px}
+
+  /* ---- section frame ---- */
+  section{padding:96px 0}
+  .sec-head{max-width:640px;margin-bottom:56px}
+  .sec-head .eyebrow{margin-bottom:20px}
+  .sec-head h2{font-size:clamp(28px,3.6vw,44px)}
+  .sec-head p{color:var(--muted);margin-top:18px;font-size:17px}
+
+  /* ---- capabilities: zig-zag, no generic cards ---- */
+  .caps{display:grid;gap:0;border-top:1px solid var(--line)}
+  .cap{
+    display:grid;grid-template-columns:1fr;gap:8px;padding:34px 0;border-bottom:1px solid var(--line);
+    align-items:start;transition:background .25s;
+  }
+  @media(min-width:820px){.cap{grid-template-columns:64px 1fr 1.2fr;gap:32px;align-items:center}}
+  .cap:hover{background:var(--panel)}
+  .cap .ci{font-family:var(--serif);font-size:20px;color:var(--red);font-weight:600}
+  .cap h3{font-size:23px;font-weight:500}
+  .cap p{color:var(--muted);font-size:15.5px}
+
+  /* ---- projects ---- */
+  .proj-grid{display:grid;grid-template-columns:1fr;gap:8px}
+  @media(min-width:720px){.proj-grid{grid-template-columns:repeat(2,1fr);gap:14px}}
+  @media(min-width:1040px){.proj-grid{grid-template-columns:repeat(6,1fr);gap:14px}}
+  .proj{position:relative;display:block;grid-column:span 1;transition:transform .3s cubic-bezier(.16,1,.3,1)}
+  @media(min-width:1040px){
+    .proj{grid-column:span 2}
+    .proj.wide{grid-column:span 3}
+    .proj.tall{grid-column:span 3}
+  }
+  .proj .media{height:100%}
+  .proj .p-body{
+    position:absolute;inset:0;z-index:3;display:flex;flex-direction:column;justify-content:flex-end;
+    padding:24px;color:#fff;
+    background:linear-gradient(to top,rgba(5,5,5,.82) 0%,rgba(5,5,5,.25) 45%,transparent 72%);
+  }
+  .proj .p-year{font-size:12px;font-weight:600;letter-spacing:.14em;color:rgba(255,255,255,.7);margin-bottom:auto}
+  .proj .p-name{font-family:var(--serif);font-size:22px;font-weight:500;line-height:1.12;margin-bottom:8px}
+  .proj .p-meta{font-size:13px;color:rgba(255,255,255,.82);display:flex;flex-wrap:wrap;gap:6px 14px}
+  .proj .p-meta span{position:relative;padding-left:14px}
+  .proj .p-meta span::before{content:"";position:absolute;left:0;top:8px;width:4px;height:4px;background:var(--red);border-radius:50%}
+  .proj:hover{transform:translateY(-4px)}
+  .proj-more{margin-top:34px;display:flex;align-items:center;gap:14px;color:var(--muted);font-size:14px}
+  .proj-more a{color:var(--ink);font-weight:600;border-bottom:1px solid var(--red);padding-bottom:2px}
+
+  /* ---- partners (dark) ---- */
+  .dark{background:var(--ink);color:var(--paper-dark)}
+  .dark .sec-head h2{color:#fff}
+  .dark .sec-head p{color:#9a948e}
+  .p-group{margin-bottom:44px}
+  .p-group:last-child{margin-bottom:0}
+  .p-group .glab{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#8a847e;margin-bottom:22px}
+  .p-logos{display:flex;flex-wrap:wrap;gap:14px}
+  .p-logos .lg{
+    border:1px solid var(--line-dark);padding:16px 26px;font-family:var(--serif);font-size:19px;
+    color:#e8e4de;font-weight:500;letter-spacing:.01em;transition:border-color .2s,color .2s;
+  }
+  .p-logos .lg:hover{border-color:var(--red);color:#fff}
+
+  /* ---- team ---- */
+  .team-grid{display:grid;grid-template-columns:1fr;gap:2px;border-top:1px solid var(--line)}
+  @media(min-width:640px){.team-grid{grid-template-columns:repeat(2,1fr);gap:0}}
+  @media(min-width:1000px){.team-grid{grid-template-columns:repeat(3,1fr)}}
+  .member{padding:32px 28px 32px 0;border-bottom:1px solid var(--line)}
+  @media(min-width:640px){.member{border-right:1px solid var(--line);padding-left:28px}
+    .member:nth-child(2n){border-right:none}}
+  @media(min-width:1000px){.member{border-right:1px solid var(--line)}
+    .member:nth-child(2n){border-right:1px solid var(--line)}
+    .member:nth-child(3n){border-right:none}}
+  .member .role{font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--red);margin-bottom:14px}
+  .member h3{font-size:21px;font-weight:500;margin-bottom:10px}
+  .member p{font-size:14.5px;color:var(--muted)}
+
+  /* ---- CTA + form ---- */
+  .cta{background:var(--ink);color:var(--paper-dark)}
+  .cta-grid{display:grid;grid-template-columns:1fr;gap:48px}
+  @media(min-width:920px){.cta-grid{grid-template-columns:1fr 1.05fr;gap:72px;align-items:start}}
+  .cta h2{font-size:clamp(30px,4vw,50px);color:#fff;margin-bottom:22px}
+  .cta h2 em{font-style:italic;color:var(--red)}
+  .cta-lead{color:#a49e98;font-size:17px;max-width:42ch;margin-bottom:34px}
+  .cta-side{border-top:1px solid var(--line-dark);padding-top:26px;margin-top:6px}
+  .cta-side .row{display:flex;gap:14px;margin-bottom:20px;font-size:14.5px}
+  .cta-side .row .k{color:#8a847e;flex:0 0 96px}
+  .cta-side .row .v{color:#e8e4de}
+  .cta-side .row .v a:hover{color:var(--red)}
+  .dl{display:inline-flex;align-items:center;gap:10px;margin-top:8px;font-size:14px;font-weight:600;color:#fff;border-bottom:1px solid var(--red);padding-bottom:3px}
+
+  form.lead{display:grid;gap:18px}
+  .fld{display:grid;gap:8px}
+  .fld label{font-size:13px;font-weight:600;color:#cfcac4;letter-spacing:.02em}
+  .fld label .req{color:var(--red)}
+  .fld input,.fld select,.fld textarea{
+    font-family:var(--sans);font-size:15px;padding:14px 16px;background:#141414;
+    border:1px solid var(--line-dark);color:#fff;transition:border-color .2s;
+  }
+  .fld input::placeholder,.fld textarea::placeholder{color:#5a544e}
+  .fld input:focus,.fld select:focus,.fld textarea:focus{outline:none;border-color:var(--red)}
+  .fld textarea{resize:vertical;min-height:88px}
+  .two{display:grid;grid-template-columns:1fr;gap:18px}
+  @media(min-width:560px){.two{grid-template-columns:1fr 1fr}}
+  form.lead .btn-primary{margin-top:6px;justify-content:center}
+  .form-note{font-size:12.5px;color:#7a746e;margin-top:4px}
+
+  /* ---- footer ---- */
+  footer.ft{background:#050505;color:#9a948e;padding:56px 0 40px;font-size:13.5px}
+  .ft-top{display:grid;grid-template-columns:1fr;gap:28px;padding-bottom:34px;border-bottom:1px solid var(--line-dark)}
+  @media(min-width:820px){.ft-top{grid-template-columns:1.4fr 1fr 1fr}}
+  .ft h4{font-family:var(--serif);color:#e8e4de;font-size:16px;font-weight:500;margin-bottom:14px;letter-spacing:0}
+  .ft .legal{line-height:1.7}
+  .ft .legal b{color:#cfcac4;font-weight:600}
+  .ft .col p{margin-bottom:8px}
+  .ft .col a:hover{color:var(--red)}
+  .ft-bot{padding-top:24px;display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;color:#6a645e;font-size:12.5px}
+
+  /* ---- reveal ---- */
+  .rv{opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1)}
+  .rv.in{opacity:1;transform:none}
+  @media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
+  :focus-visible{outline:2px solid var(--red);outline-offset:3px}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a href="#top" class="brand">
+      <span class="mark">W<b>5</b></span>
+      <span>STUDIO WEST 5<small>Design · Invest · Manage</small></span>
+    </a>
+    <nav class="nav-links">
+      <a href="#nangluc">Năng lực</a>
+      <a href="#duan">Dự án</a>
+      <a href="#doingu">Đội ngũ</a>
+      <a href="#doitac">Đối tác</a>
+    </nav>
+    <a href="#lienhe" class="nav-cta">Yêu cầu tư vấn</a>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-grid">
+        <div class="hero-copy rv">
+          <span class="eyebrow">Tư vấn đầu tư & thiết kế · Từ 2010</span>
+          <h1>Kiến tạo <em>nhà ở cao tầng</em> và nhà ở xã hội, từ chủ trương đến bàn giao.</h1>
+          <p class="hero-sub">Studio West 5 đồng hành chủ đầu tư trọn vòng đời dự án: chủ trương đầu tư, quy hoạch 1/500, thiết kế, quản lý dự án và giám sát thi công.</p>
+          <div class="hero-actions">
+            <a href="#lienhe" class="btn btn-primary">Gửi yêu cầu tư vấn <span class="ar">↗</span></a>
+            <a href="#profile" class="btn btn-ghost" id="dlTop">Tải hồ sơ năng lực</a>
+          </div>
+        </div>
+        <div class="hero-media rv">
+          <div class="media ratio-43" style="height:100%">
+            <img src="hero-hung-phu-ii.jpg" alt="Nhà ở xã hội Hưng Phú II" onerror="this.style.display='none'">
+            <div class="ph">
+              <div class="num">01</div>
+              <div class="plabel"><b>NƠXH Hưng Phú II</b>30 tầng · 1.062 căn · Nha Trang</div>
+            </div>
+          </div>
+          <div class="hero-tag"><b>Dự án tiêu biểu.</b> Thiết kế phương án, quy hoạch 1/500, bản vẽ thi công và quản lý dự án.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- STATS -->
+    <div class="stats rv">
+      <div class="wrap">
+        <div class="stats-grid">
+          <div class="stat"><div class="n">2010</div><div class="l">Năm thành lập</div></div>
+          <div class="stat"><div class="n">15<span>+</span></div><div class="l">Dự án tiêu biểu</div></div>
+          <div class="stat"><div class="n">30<span> tầng</span></div><div class="l">Quy mô cao nhất đã thiết kế</div></div>
+          <div class="stat"><div class="n">96,7<span> Ha</span></div><div class="l">Đồ án quy hoạch lớn nhất</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NĂNG LỰC -->
+  <section id="nangluc">
+    <div class="wrap">
+      <div class="sec-head rv">
+        <span class="eyebrow">Năng lực</span>
+        <h2>Một đầu mối cho toàn bộ vòng đời dự án.</h2>
+        <p>Chủ đầu tư làm việc với một đội ngũ duy nhất từ ý tưởng đến vận hành — thay vì điều phối nhiều nhà thầu rời rạc.</p>
+      </div>
+      <div class="caps rv">
+        <div class="cap">
+          <div class="ci">01</div>
+          <h3>Tư vấn thiết kế</h3>
+          <p>Quy hoạch, thiết kế cơ sở, thiết kế bản vẽ thi công, nội thất và cảnh quan.</p>
+        </div>
+        <div class="cap">
+          <div class="ci">02</div>
+          <h3>Tư vấn đầu tư</h3>
+          <p>Xin chủ trương đầu tư, đánh giá hiệu quả đầu tư (FS) và xử lý pháp lý đất đai.</p>
+        </div>
+        <div class="cap">
+          <div class="ci">03</div>
+          <h3>Quản lý chi phí đầu tư</h3>
+          <p>Lập dự toán chi tiết, thẩm định tổng mức đầu tư, kiểm soát chi phí và rủi ro tài chính trong thi công.</p>
+        </div>
+        <div class="cap">
+          <div class="ci">04</div>
+          <h3>Quản lý dự án & giám sát</h3>
+          <p>Điều phối tổng thể từ chuẩn bị đầu tư đến bàn giao; giám sát thi công theo bản vẽ, tiêu chuẩn kỹ thuật và an toàn lao động.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DỰ ÁN -->
+  <section id="duan" style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head rv">
+        <span class="eyebrow">Dự án tiêu biểu</span>
+        <h2>Danh mục nhà ở cao tầng, NƠXH và quy hoạch đô thị.</h2>
+      </div>
+      <div class="proj-grid rv">
+
+        <a class="proj wide" href="#lienhe">
+          <div class="media ratio-32">
+            <img src="hung-phu-ii.jpg" alt="NƠXH Hưng Phú II" onerror="this.style.display='none'">
+            <div class="ph"><div class="num">01</div></div>
+            <div class="p-body">
+              <div class="p-year">2026 · Khánh Hòa</div>
+              <div class="p-name">NƠXH Hưng Phú II</div>
+              <div class="p-meta"><span>30 tầng + 1 hầm</span><span>6.895 m²</span><span>1.062 căn</span></div>
+            </div>
+          </div>
+        </a>
+
+        <a class="proj tall" href="#lienhe">
+          <div class="media ratio-32">
+            <img src="cang-sai-gon.jpg" alt="NƠXH Cảng Sài Gòn" onerror="this.style.display='none'">
+            <div class="ph"><div class="num">02</div></div>
+            <div class="p-body">
+              <div class="p-year">2026 · TP.HCM</div>
+              <div class="p-name">NƠXH Cảng Sài Gòn</div>
+              <div class="p-meta"><span>22 tầng + 3 hầm</span><span>6.788 m²</span><span>842 căn</span></div>
+            </div>
+          </div>
+        </a>
+
+        <a class="proj" href="#lienhe">
+          <div class="media ratio-43">
+            <img src="khang-anh-bao.jpg" alt="Chung cư NƠXH Khang Anh Bảo" onerror="this.style.display='none'">
+            <div class="ph"><div class="num">03</div></div>
+            <div class="p-body">
+              <div class="p-year">2026 · Long An</div>
+              <div class="p-name">CC NƠXH Khang Anh Bảo</div>
+              <div class="p-meta"><span>14 tầng</span><span>MĐXD 46%</span></div>
+            </div>
+          </div>
+        </a>
+
+        <a class="proj" href="#lienhe">
+          <div class="media ratio-43">
+            <img src="dai-nam.jpg" alt="Khu dân cư Đại Nam" onerror="this.style.display='none'">
+            <div class="ph"><div class="num">04</div></div>
+            <div class="p-body">
+              <div class="p-year">2021 · Bình Phước</div>
+              <div class="p-name">Khu dân cư Đại Nam</div>
+              <div class="p-meta"><span>96,7 Ha</span><span>Quy hoạch 1/500</span></div>
+            </div>
+          </div>
+        </a>
+
+        <a class="proj" href="#lienhe">
+          <div class="media ratio-43">
+            <img src="hang-hai-mien-dong.jpg" alt="KĐT dịch vụ hàng hải miền Đông" onerror="this.style.display='none'">
+            <div class="ph"><div class="num">05</div></div>
+            <div class="p-body">
+              <div class="p-year">2021 · Đồng Nai</div>
+              <div class="p-name">KĐT dịch vụ hàng hải miền Đông</div>
+              <div class="p-meta"><span>57,4 Ha</span><span>1/500 + FS</span></div>
+            </div>
+          </div>
+        </a>
+
+        <a class="proj wide" href="#lienhe">
+          <div class="media ratio-32">
+            <img src="thanh-long-bay.jpg" alt="Thanh Long Bay Phan Thiết" onerror="this.style.display='none'">
+            <div class="ph"><div class="num">06</div></div>
+            <div class="p-body">
+              <div class="p-year">2021 · Bình Thuận</div>
+              <div class="p-name">Tổ hợp nghỉ dưỡng Thanh Long Bay</div>
+              <div class="p-meta"><span>Phân tích hiệu quả đầu tư (FS)</span></div>
+            </div>
+          </div>
+        </a>
+
+        <a class="proj" href="#lienhe">
+          <div class="media ratio-43">
+            <img src="phuong-nam-dalat.jpg" alt="NƠXH Phương Nam Đà Lạt 5B" onerror="this.style.display='none'">
+            <div class="ph"><div class="num">07</div></div>
+            <div class="p-body">
+              <div class="p-year">2019 · Lâm Đồng</div>
+              <div class="p-name">NƠXH Phương Nam Đà Lạt 5B</div>
+              <div class="p-meta"><span>99,55 Ha</span><span>Quy hoạch 1/500</span></div>
+            </div>
+          </div>
+        </a>
+
+        <a class="proj" href="#lienhe">
+          <div class="media ratio-43">
+            <img src="phuong-nam-bentre.jpg" alt="NƠXH Phương Nam Riverside Bến Tre" onerror="this.style.display='none'">
+            <div class="ph"><div class="num">08</div></div>
+            <div class="p-body">
+              <div class="p-year">2019 · Bến Tre</div>
+              <div class="p-name">NƠXH Phương Nam Riverside</div>
+              <div class="p-meta"><span>46,4 Ha</span><span>FS</span></div>
+            </div>
+          </div>
+        </a>
+
+        <a class="proj" href="#lienhe">
+          <div class="media ratio-43">
+            <img src="phuc-hop-danang.jpg" alt="Tòa nhà phức hợp Đà Nẵng" onerror="this.style.display='none'">
+            <div class="ph"><div class="num">09</div></div>
+            <div class="p-body">
+              <div class="p-year">2024 · Đà Nẵng</div>
+              <div class="p-name">Khu phức hợp TM–DV & lưu trú</div>
+              <div class="p-meta"><span>Phân tích hiệu quả đầu tư (FS)</span></div>
+            </div>
+          </div>
+        </a>
+
+        <a class="proj wide" href="#lienhe">
+          <div class="media ratio-32">
+            <img src="kien-thanh.jpg" alt="Khu dân cư Kiến Thành, Ninh Thuận" onerror="this.style.display='none'">
+            <div class="ph"><div class="num">10</div></div>
+            <div class="p-body">
+              <div class="p-year">2026 · Ninh Thuận</div>
+              <div class="p-name">Khu dân cư Kiến Thành (Tháp Chàm)</div>
+              <div class="p-meta"><span>4,56 Ha</span><span>1/500 · nội thất · cảnh quan</span></div>
+            </div>
+          </div>
+        </a>
+
+      </div>
+      <div class="proj-more rv">
+        <span>Còn 5 dự án khác trong danh mục đầy đủ —</span>
+        <a href="#lienhe">liên hệ để nhận catalog</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ĐỐI TÁC -->
+  <section id="doitac" class="dark">
+    <div class="wrap">
+      <div class="sec-head rv">
+        <span class="eyebrow on-dark">Đối tác & nền tảng</span>
+        <h2>Kinh nghiệm tích lũy cùng những đơn vị lớn của ngành.</h2>
+        <p>Đội ngũ chủ chốt trưởng thành từ các tập đoàn bất động sản và tư vấn thiết kế trong nước và quốc tế.</p>
+      </div>
+      <div class="p-group rv">
+        <div class="glab">Đội ngũ từng làm việc & hợp tác cùng</div>
+        <div class="p-logos">
+          <div class="lg">VinaCapital</div>
+          <div class="lg">Nam Long</div>
+          <div class="lg">Hoàng Quân</div>
+          <div class="lg">Veritas</div>
+          <div class="lg">Nagecco</div>
+          <div class="lg">Đông Á Real Estate</div>
+        </div>
+      </div>
+      <div class="p-group rv">
+        <div class="glab">Đối tác</div>
+        <div class="p-logos">
+          <div class="lg">Penta G.O Studio</div>
+          <div class="lg">Trần Đạt DIC</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ĐỘI NGŨ -->
+  <section id="doingu">
+    <div class="wrap">
+      <div class="sec-head rv">
+        <span class="eyebrow">Đội ngũ chủ chốt</span>
+        <h2>Kiến trúc sư và kỹ sư có chứng chỉ hành nghề, nhiều năm thực chiến.</h2>
+      </div>
+      <div class="team-grid rv">
+        <div class="member">
+          <div class="role">Giám đốc Phát triển Dự án</div>
+          <h3>ThS. KTS Trần Tiến Danh</h3>
+          <p>Chủ trì thiết kế kiến trúc – quy hoạch. ~20 năm quản lý dự án bất động sản nhà ở và nhà ở xã hội; am hiểu pháp lý đầu tư, đất đai.</p>
+        </div>
+        <div class="member">
+          <div class="role">Giám đốc Quản lý Dự án</div>
+          <h3>ThS. KTS Trương Thái Bình</h3>
+          <p>~20 năm phát triển bất động sản cao cấp, nghỉ dưỡng và phức hợp đa chức năng tại Việt Nam và Đông Nam Á. Chứng nhận ISO 9001 QLCL xây dựng.</p>
+        </div>
+        <div class="member">
+          <div class="role">Kinh tế xây dựng · QLDA</div>
+          <h3>KS Nguyễn Phong</h3>
+          <p>Chứng chỉ định giá xây dựng hạng I. ~14 năm quản lý dự án trường học, bệnh viện và nhà ở xã hội.</p>
+        </div>
+        <div class="member">
+          <div class="role">Thiết kế Concept</div>
+          <h3>KTS Nguyễn Mộng Tường Vi</h3>
+          <p>Chứng chỉ QLDA đầu tư xây dựng. Thiết kế kiến trúc công trình, kiến trúc trong đồ án quy hoạch và kiến trúc cảnh quan.</p>
+        </div>
+        <div class="member">
+          <div class="role">Thiết kế – Quản lý dự án</div>
+          <h3>KTS Trần Nguyễn Ngọc Anh</h3>
+          <p>Kiến trúc sư, Đại học Văn Lang TP.HCM. Thiết kế concept và triển khai hồ sơ.</p>
+        </div>
+        <div class="member">
+          <div class="role">Kỹ thuật</div>
+          <h3>Khối kỹ sư kỹ thuật</h3>
+          <p>Kỹ sư kết cấu, giao thông, cơ khí, môi trường và đô thị — bảo đảm hạ tầng kỹ thuật đồng bộ cho từng dự án.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA + FORM -->
+  <section id="lienhe" class="cta">
+    <div class="wrap">
+      <div class="cta-grid">
+        <div class="rv">
+          <span class="eyebrow on-dark">Bắt đầu</span>
+          <h2 style="margin-top:22px">Gửi cho chúng tôi <em>thông tin dự án</em> của anh/chị.</h2>
+          <p class="cta-lead">Chúng tôi sẽ phản hồi hướng tiếp cận sơ bộ về thiết kế, đầu tư hoặc quản lý dự án trong thời gian sớm nhất.</p>
+          <div class="cta-side">
+            <div class="row"><div class="k">Điện thoại</div><div class="v"><a href="tel:0908627349">0908 627 349</a></div></div>
+            <div class="row"><div class="k">Email</div><div class="v"><a href="mailto:tvqlda@studiowest5.vn">tvqlda@studiowest5.vn</a></div></div>
+            <div class="row"><div class="k">Trụ sở chính</div><div class="v">178/9 Phan Đăng Lưu, P. Đức Nhuận, TP.HCM</div></div>
+            <a href="#profile" class="dl" id="dlBottom">Tải hồ sơ năng lực (PDF) <span>↓</span></a>
+          </div>
+        </div>
+        <div class="rv">
+          <form class="lead" id="leadForm">
+            <div class="two">
+              <div class="fld">
+                <label for="name">Họ và tên <span class="req">*</span></label>
+                <input id="name" name="name" type="text" placeholder="Nguyễn Văn A" required>
+              </div>
+              <div class="fld">
+                <label for="org">Đơn vị / Chủ đầu tư</label>
+                <input id="org" name="org" type="text" placeholder="Tên công ty">
+              </div>
+            </div>
+            <div class="two">
+              <div class="fld">
+                <label for="phone">Điện thoại <span class="req">*</span></label>
+                <input id="phone" name="phone" type="tel" placeholder="09xx xxx xxx" required>
+              </div>
+              <div class="fld">
+                <label for="email">Email</label>
+                <input id="email" name="email" type="email" placeholder="ban@congty.vn">
+              </div>
+            </div>
+            <div class="fld">
+              <label for="need">Nhu cầu</label>
+              <select id="need" name="need">
+                <option>Tư vấn thiết kế</option>
+                <option>Tư vấn đầu tư</option>
+                <option>Quản lý dự án & giám sát</option>
+                <option>Quản lý chi phí đầu tư</option>
+                <option>Khác</option>
+              </select>
+            </div>
+            <div class="fld">
+              <label for="msg">Mô tả dự án</label>
+              <textarea id="msg" name="msg" placeholder="Vị trí, quy mô, giai đoạn hiện tại…"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Gửi yêu cầu tư vấn <span class="ar">↗</span></button>
+            <p class="form-note">Bản demo dùng ứng dụng email của anh/chị để gửi. Khi triển khai thật nên nối form với dịch vụ nhận (email/CRM).</p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="ft">
+  <div class="wrap">
+    <div class="ft-top">
+      <div class="col legal">
+        <h4>Studio West 5</h4>
+        <p><b>CÔNG TY TNHH TƯ VẤN THIẾT KẾ KIẾN TRÚC ĐẦU TƯ VÀ XÂY DỰNG STUDIO WEST 5</b></p>
+        <p>Đại diện pháp lý: <b>Bà Nguyễn Thuỵ Bảo Trâm</b> — Giám đốc</p>
+        <p>Mã số thuế: 0311034756</p>
+      </div>
+      <div class="col">
+        <h4>Địa chỉ</h4>
+        <p>Trụ sở chính: 178/9 Phan Đăng Lưu, P. Đức Nhuận, TP.HCM</p>
+        <p>VPĐD: Tòa nhà VNO, 462 Phan Xích Long, P. Cầu Kiệu, TP.HCM</p>
+      </div>
+      <div class="col">
+        <h4>Liên hệ</h4>
+        <p><a href="tel:0908627349">0908 627 349</a></p>
+        <p><a href="mailto:tvqlda@studiowest5.vn">tvqlda@studiowest5.vn</a></p>
+        <p><a href="#lienhe">Gửi yêu cầu tư vấn</a></p>
+      </div>
+    </div>
+    <div class="ft-bot">
+      <span>© 2026 Studio West 5. Tư vấn thiết kế · đầu tư · quản lý dự án.</span>
+      <span>Nhà ở cao tầng — Nhà ở xã hội — Quy hoạch đô thị</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Reveal on scroll
+  (function(){
+    var els=document.querySelectorAll('.rv');
+    if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('in')});return;}
+    var io=new IntersectionObserver(function(en){
+      en.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target);}});
+    },{threshold:.12,rootMargin:'0px 0px -8% 0px'});
+    els.forEach(function(e){io.observe(e);});
+  })();
+
+  // Lead form -> mailto (demo, no backend)
+  var COMPANY_EMAIL="tvqlda@studiowest5.vn";
+  document.getElementById('leadForm').addEventListener('submit',function(ev){
+    ev.preventDefault();
+    var f=ev.target;
+    var body=
+      "Họ tên: "+f.name.value+"\n"+
+      "Đơn vị/CĐT: "+f.org.value+"\n"+
+      "Điện thoại: "+f.phone.value+"\n"+
+      "Email: "+f.email.value+"\n"+
+      "Nhu cầu: "+f.need.value+"\n\n"+
+      "Mô tả dự án:\n"+f.msg.value;
+    window.location.href="mailto:"+COMPANY_EMAIL+
+      "?subject="+encodeURIComponent("[Yêu cầu tư vấn] "+f.name.value)+
+      "&body="+encodeURIComponent(body);
+  });
+
+  // Profile download placeholder
+  var PROFILE_URL="https://drive.google.com/file/d/1rBePM_z2jN_XOs3T1TJ4awuLtDA_T-tI/view?usp=drive_link";
+  function dl(ev){
+    if(!PROFILE_URL){ev.preventDefault();alert("Chưa gắn link hồ sơ năng lực PDF. Dán link vào biến PROFILE_URL trong mã.");return;}
+    ev.currentTarget.setAttribute('href',PROFILE_URL);
+  }
+  ['dlTop','dlBottom'].forEach(function(id){var e=document.getElementById(id);if(e)e.addEventListener('click',dl);});
+</script>
+</body>
+</html>
